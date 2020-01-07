@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Model\User;
+use App\Model\TestCategory;
 use Faker\Generator as Faker;
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(TestCategory::class, function (Faker $faker) {
     return [
         //
     ];
