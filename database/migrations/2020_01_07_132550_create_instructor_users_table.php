@@ -17,7 +17,7 @@ class CreateInstructorUsersTable extends Migration
             $table->bigInteger('instructor_id')->primary()->unsigned();
             $table->string('instructor_name');
             $table->text('instructor_bio');
-            $table->string('instructor_phone',14);
+            $table->char('instructor_phone',14);
             $table->string('instructor_address',200);
             $table->string('user_profile_picture',200);
 

@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->text('post_text');
             $table->string('post_image',200);
 
-            $table->foreign('user_id')->references('user_id')->on('student_users')
+            $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');
             
             $table->timestamps();

@@ -11,6 +11,7 @@ class StudentUserSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
+        factory(App\Model\StudentUser::class,40)->create();
     }
 }
