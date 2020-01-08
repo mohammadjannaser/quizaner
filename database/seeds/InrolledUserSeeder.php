@@ -11,6 +11,6 @@ class InrolledUserSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Model\InrolledUser::class,500)->create();
     }
 }

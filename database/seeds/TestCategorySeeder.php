@@ -11,6 +11,6 @@ class TestCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Model\TestCategory::class,30)->create();
     }
 }

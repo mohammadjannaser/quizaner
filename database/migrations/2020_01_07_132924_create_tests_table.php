@@ -25,6 +25,7 @@ class CreateTestsTable extends Migration
             $table->integer('test_cost');
             $table->integer('test_privacy');
             $table->integer('test_category');
+            $table->string('test_image',200);
             
             $table->foreign('instructor_id')->references('instructor_id')->on('instructor_users')
             ->onUpdate('restrict')->onDelete('cascade');

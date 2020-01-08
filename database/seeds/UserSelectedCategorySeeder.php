@@ -11,6 +11,6 @@ class UserSelectedCategorySeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Model\UserSelectedCategory::class,100)->create();
     }
 }

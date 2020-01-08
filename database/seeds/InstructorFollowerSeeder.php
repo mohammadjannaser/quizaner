@@ -11,6 +11,6 @@ class InstructorFollowerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Model\InstructorFollower::class,100)->create();
     }
 }

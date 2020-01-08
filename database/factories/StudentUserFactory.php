@@ -16,9 +16,10 @@ $factory->define(StudentUser::class, function (Faker $faker) {
          * user_bio
          * user_profile_picture
          */
-        'user_id' => function(){
-            return User::all()->random();
-        },
+        // 'user_id' => function(){
+        //     return User::all()->random();
+        // },
+        // get user id as argument
         'username' => $faker->name,
         'user_address' => $faker->address,
         'dob' => $faker->date($format = 'Y-m-d', $max = 'now'),

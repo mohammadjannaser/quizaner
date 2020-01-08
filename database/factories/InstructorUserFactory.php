@@ -19,12 +19,10 @@ $factory->define(InstructorUser::class, function (Faker $faker) {
          * user_profile_picture
          */
 
-        'instructor_id' => function(){
-
-            return User::all('id')->random();
-            // return  User::pluck('id')->whereNotIn('id',$studentIdList)->get()->random();
-
-        },
+        // 'instructor_id' => function(){
+        //     return User::all('id')->random();
+        // },
+        // get instructor_id as an argument...
         'instructor_name' => $faker->name,
         'instructor_address' => $faker->address,
         'instructor_bio' => $faker->paragraph($nbSentences = 5, $variableNbSentences = true),

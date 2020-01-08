@@ -11,6 +11,6 @@ class ChallengersSeeder extends Seeder
      */
     public function run()
     {
-        //
+        factory(App\Model\Challengers::class,500)->create();
     }
 }
