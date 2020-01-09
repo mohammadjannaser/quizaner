@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Model\Test;
 use Illuminate\Http\Request;
+use App\Http\Resources\Test\TestResource;
+use App\Http\Resources\Test\TestCollection;
 
 class TestController extends Controller
 {
@@ -14,7 +16,7 @@ class TestController extends Controller
      */
     public function index()
     {
-        //
+        return TestCollection::collection(Test::all());
     }
 
     /**
@@ -46,7 +48,7 @@ class TestController extends Controller
      */
     public function show(Test $test)
     {
-        //
+        return new TestResource($test);
     }
 
     /**

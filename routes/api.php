@@ -22,3 +22,4 @@ Route::apiResource('/tests','TestController');
 Route::group(['prefex'=>'tests'],function(){
     Route::apiResource('/{tests}/questions','QuestionController');
 });
+
