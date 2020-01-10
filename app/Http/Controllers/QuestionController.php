@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Model\Question;
 use Illuminate\Http\Request;
 
+use App\Http\Resources\Question\QuestionResource;
+use App\Http\Resources\Question\QuestionCollection;
+
 class QuestionController extends Controller
 {
     /**
@@ -14,7 +17,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        //
+        return QuestionResource::collection(Question::paginate(5));
     }
 
     /**

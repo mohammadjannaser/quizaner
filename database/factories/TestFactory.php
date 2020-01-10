@@ -27,7 +27,7 @@ $factory->define(Test::class, function (Faker $faker) {
         'test_duration' => $faker->numberBetween(1,200),
         'number_of_question' => $faker->numberBetween(1,100),
         'test_score' =>$faker->numberBetween(1,500),
-        'test_hoding_date' => $faker->dateTime($max = 'now', $timezone = null),
+        'test_holding_date' => $faker->dateTime($max = 'now', $timezone = null),
         'test_description' => $faker->paragraph($nbSentences = 10, $variableNbSentences = true),
         'test_cost' => $faker->numberBetween(1,100),
         'test_privacy' => $faker->numberBetween(1,2),

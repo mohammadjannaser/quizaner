@@ -20,6 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('/tests','TestController');
 
 Route::group(['prefex'=>'tests'],function(){
-    Route::apiResource('/{tests}/questions','QuestionController');
+    Route::apiResource('/tests/{tests}/questions','QuestionController');
 });
 

@@ -11,10 +11,8 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\Model\User::class,100)->create()->each(
+        factory(App\Model\User::class,50)->create()->each(
             function($user){
-
-                
 
                 if($user->id%4==0){
                     factory(App\Model\InstructorUser::class)->create(['instructor_id' => $user->id]);
@@ -35,16 +33,16 @@ class DatabaseSeeder extends Seeder
        
         factory(App\Model\TestCategory::class,50)->create();
 
-        factory(App\Model\Test::class,200)->create();
-        factory(App\Model\Question::class,1000)->create()->each(
-            function(){
-                factory(App\Model\Answer::class,4)->create();
+        factory(App\Model\Test::class,100)->create();
+        factory(App\Model\Question::class,500)->create()->each(
+            function($question){
+                factory(App\Model\Answer::class)->create(['question_id'=> $question->id]);
             }
         );
       
 
         factory(App\Model\InstructorFollower::class,50)->create();
-        factory(App\Model\UserSelectedCategory::class,100)->create();
+        factory(App\Model\UserSelectedCategory::class,50)->create();
         
         
     }

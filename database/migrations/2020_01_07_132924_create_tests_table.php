@@ -20,7 +20,7 @@ class CreateTestsTable extends Migration
             $table->integer('test_duration');
             $table->integer('number_of_question');
             $table->integer('test_score');
-            $table->dateTime('test_holding_date_time');
+            $table->dateTime('test_holding_date');
             $table->mediumText('test_description');
             $table->integer('test_cost');
             $table->integer('test_privacy');

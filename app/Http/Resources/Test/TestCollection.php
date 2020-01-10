@@ -16,7 +16,7 @@ class TestCollection extends Resource
     {
         return [
             'test_name' => $this->test_name,
-            'test_date_time' => $this->test_hoding_date,//in the next migration fix hoding name
+            'test_date_time' => $this->test_holding_date,
             'test_image' => $this->test_image,
             'href' =>[
                 'link' => route('tests.show',$this->id)
