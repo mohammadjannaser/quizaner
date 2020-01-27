@@ -12,16 +12,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         //
-        factory(App\Model\User::class,50)->create()->each(
+        factory(App\Model\User::class,10)->create()->each(
             function($user){
-                if($user->id%4==0){
-                    factory(App\Model\InstructorUser::class)->create(['instructor_id' => $user->id]);
-                }else {
-                    factory(App\Model\StudentUser::class)->create(['user_id' => $user->id]);
-                }
-               
+
+                factory(App\Model\UserDetail::class)->create(['user_id' => $user->id]);
+
+                factory(App\Model\Credit::class)->create(['user_id' => $user->id]);
                 
             }
         );
+
     }
 }

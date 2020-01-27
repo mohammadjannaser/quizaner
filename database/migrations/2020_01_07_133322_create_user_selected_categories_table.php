@@ -18,7 +18,7 @@ class CreateUserSelectedCategoriesTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('category_id')->unsigned();
 
-            $table->foreign('user_id')->references('user_id')->on('student_users')
+            $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');
 
             $table->foreign('category_id')->references('id')->on('test_categories')

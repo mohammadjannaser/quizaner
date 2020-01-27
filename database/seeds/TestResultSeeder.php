@@ -11,6 +11,6 @@ class TestResultSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Model\TestResult::class,100)->create();
+        factory(App\Model\TestResult::class,1000)->create();
     }
 }

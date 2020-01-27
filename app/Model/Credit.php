@@ -8,6 +8,6 @@ class Credit extends Model
 {
     //
     public function user(){
-       return $this->belongsTo(StudentUser::class);
+       return $this->belongsTo(User::class);
     }
 }

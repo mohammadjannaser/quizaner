@@ -1,0 +1,47 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateUserDetailsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('user_details', function (Blueprint $table) {
+
+            $table->bigInteger('user_id')->primary()->unsigned();
+
+            $table->string('username');
+            $table->char('phone',14)->nullable();
+            $table->dateTime('dob');
+            $table->string('country',200);
+            $table->text('user_bio');
+            $table->string('user_profile_picture',200);
+            $table->boolean('verified')->default(0);
+            $table->integer('user_type')->default(1);
+            // User type 1 indicate Student user and user type 2 indicate instructor type
+
+
+            $table->foreign('user_id')->references('id')->on('users')
+            ->onUpdate('restrict')->onDelete('cascade');
+
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('user_details');
+    }
+}

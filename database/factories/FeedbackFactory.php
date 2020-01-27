@@ -3,12 +3,12 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Model\Feedback;
-use App\Model\StudentUser;
+use App\Model\User;
 use Faker\Generator as Faker;
 
 $factory->define(Feedback::class, function (Faker $faker) {
     return [
-        'user_id' => StudentUser::all()->random()->user_id,
+        'user_id' => User::all()->random()->id,
         'feedback' => $faker->paragraph
     ];
 });

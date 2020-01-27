@@ -17,7 +17,7 @@ class CreateCreditsTable extends Migration
             $table->bigInteger('user_id')->primary()->unsigned();
             $table->integer('credit_amount');
 
-            $table->foreign('user_id')->references('user_id')->on('student_users')
+            $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');
             
             $table->timestamps();

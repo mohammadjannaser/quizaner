@@ -20,10 +20,10 @@ class CreateChallengersTable extends Migration
 
             $table->primary(['user1_id','user2_id', 'test_id']);
 
-            $table->foreign('user1_id')->references('user_id')->on('student_users')
+            $table->foreign('user1_id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');
             
-            $table->foreign('user2_id')->references('user_id')->on('student_users')
+            $table->foreign('user2_id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');
             
             $table->foreign('test_id')->references('id')->on('tests')

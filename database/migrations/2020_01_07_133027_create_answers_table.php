@@ -25,7 +25,13 @@ class CreateAnswersTable extends Migration
             $table->text('answer4');
             $table->string('answer4_image', 200);
             $table->smallInteger('correct_answer');
+
+            $table->foreign('question_id')->references('id')->on('questions')
+            ->onUpdate('restrict')->onDelete('cascade');
+            
             $table->timestamps();
+
+
         });
     }
 

@@ -19,7 +19,7 @@ class CreateInrolledUsersTable extends Migration
 
             $table->primary(['user_id', 'test_id']);
 
-            $table->foreign('user_id')->references('user_id')->on('student_users')
+            $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');
     
             $table->foreign('test_id')->references('id')->on('tests')

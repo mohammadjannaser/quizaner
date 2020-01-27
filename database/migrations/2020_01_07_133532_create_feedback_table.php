@@ -19,7 +19,7 @@ class CreateFeedbackTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->text('feedback');
 
-            $table->foreign('user_id')->references('user_id')->on('student_users')
+            $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');
 
             $table->timestamps();

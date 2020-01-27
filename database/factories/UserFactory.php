@@ -17,7 +17,7 @@ $factory->define(User::class, function (Faker $faker) {
 
         'phone' => $faker->e164PhoneNumber,
         'facebook_id' =>$faker->uuid,
-        'google_id' => $faker->uuid,
-        'user_type' => $faker->numberBetween(1,2)
+        'google_id' => $faker->uuid
+      
     ];
 });

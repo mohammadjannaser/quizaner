@@ -4,14 +4,14 @@
 
 use App\Model\UserSelectedCategory;
 use App\Model\TestCategory;
-use App\Model\StudentUser;
+use App\Model\User;
 
 use Faker\Generator as Faker;
 
 $factory->define(UserSelectedCategory::class, function (Faker $faker) {
     return [
         
-        'user_id' => StudentUser::all()->random()->user_id,
+        'user_id' => User::all()->random()->id,
         'category_id' => TestCategory::all()->random()->id
     ];
 });

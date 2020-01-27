@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+
 use Symfony\Component\HttpFoundation\Response;
 
 use App\Model\Test;
@@ -21,6 +23,114 @@ class TestController extends Controller
     {
         return TestCollection::collection(Test::paginate(5));
     }
+
+    public function allTest(){
+    
+ 
+
+        $tests = DB::table('tests')
+                    ->join('user_details', function ($join) {
+                        $join->on('user_details.user_id', '=', 'tests.user_id')
+                        ->where('tests.user_id', '>', 20)
+                        ->where(function($query){
+                            $query->where('tests.user_id',30)
+                            ->orWhere('user_details.user_id',40);
+
+                        });
+                    })
+                    ->select('user_details.user_id','user_details.username',
+                                'tests.test_name','tests.test_image','tests.test_holding_date',
+                                'tests.id as test_id')
+                    ->orderBy('tests.id','desc')
+                    ->get();
+
+        return $tests;
+    }
+
+
+    public function topTest(){
+
+
+        $tests = DB::table('tests')
+        ->join('user_details','user_details.user_id','=','tests.user_id')
+        ->select('user_details.username','tests.test_name','tests.test_image','tests.test_holding_date',
+        'tests.id as test_id')
+        ->limit(5)
+        ->get();
+
+        return response([
+            'http_response' => Response::HTTP_OK,
+            'data' => $tests,
+            'message' => count($tests) . ' rows has been selected'
+        ],Response::HTTP_OK);
+     
+    }
+
+    public function getUserQuizzes(Request $request){
+
+        if(empty($request->user_id)){
+              
+            return response([
+                'http_response' => Response::HTTP_NOT_FOUND,
+                'data' => '',
+                'message' =>' UserId is Null'
+            ],Response::HTTP_NOT_FOUND);
+
+        }
+
+        
+        $tests = DB::table('tests')
+            ->join('user_details','user_details.user_id','=','tests.user_id')
+            ->select('user_details.username','tests.test_name','tests.test_image','tests.test_holding_date',
+            'tests.id as test_id','tests.user_id')
+            ->where('tests.user_id',$request->user_id)
+            ->limit(5)
+            ->get();
+
+                    
+        return response([
+            'http_response' => Response::HTTP_OK,
+            'data' => $tests,
+            'message' => count($tests) . ' rows has been selected'
+        ],Response::HTTP_OK);
+    }
+
+
+    public function getStudentEnrolledTest(Request $request){
+
+        if(empty($request->user_id)){
+              
+            return response([
+                'http_response' => Response::HTTP_NOT_FOUND,
+                'data' => '',
+                'message' =>' UserId is Null'
+            ],Response::HTTP_NOT_FOUND);
+
+        }
+
+
+        $tests = DB::table('inrolled_users')
+                    ->join('tests','tests.id', '=', 'inrolled_users.test_id')
+                    ->join('user_details','user_details.user_id','=','tests.user_id')
+                    ->where('inrolled_users.user_id', $request->user_id)
+                    ->select(
+                        'tests.id as test_id'
+                        ,'tests.test_name'
+                        ,'tests.test_holding_date'
+                        ,'user_details.username'
+                        ,'tests.test_image'
+                        )
+                    ->get();
+
+                    
+        return response([
+            'http_response' => Response::HTTP_OK,
+            'data' => $tests,
+            'message' => count($tests) . ' rows has been selected'
+        ],Response::HTTP_OK);
+
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -121,6 +231,21 @@ class TestController extends Controller
      */
     public function destroy(Test $test)
     {
-        //
+        
+        if($test->delete()){
+            // send success response
+            return response([
+                'data' => 'Test deleted Successfully'
+            ],200);
+    
+        }else{
+            // send failed response
+            return response([
+                'data' => 'delete Failed try again' 
+            ],404);
+    
+        }
+
+    
     }
 }

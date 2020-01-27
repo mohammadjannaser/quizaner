@@ -4,7 +4,7 @@
 
 use App\Model\Challengers;
 
-use App\Model\StudentUser;
+use App\Model\User;
 
 use App\Model\Test;
 
@@ -13,8 +13,8 @@ use Faker\Generator as Faker;
 $factory->define(Challengers::class, function (Faker $faker) {
     return [
      
-        'user1_id' => StudentUser::all()->random()->user_id,
-        'user2_id' => StudentUser::all()->random()->user_id,
+        'user1_id' => User::all()->random()->id,
+        'user2_id' => User::all()->random()->id,
         'test_id' => Test::all()->random()->id
     ];
 });

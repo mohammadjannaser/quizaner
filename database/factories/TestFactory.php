@@ -3,7 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Model\Test;
-use App\Model\InstructorUser;
+use App\Model\User;
 use App\Model\TestCategory;
 
 use Faker\Generator as Faker;
@@ -11,7 +11,7 @@ use Faker\Generator as Faker;
 $factory->define(Test::class, function (Faker $faker) {
     return [
         /***********
-         * instructor_id
+         * user_id
          * test_name
          * test_duration
          * number_of_question
@@ -22,7 +22,7 @@ $factory->define(Test::class, function (Faker $faker) {
          * test_privacy
          * test_category
          */
-        'instructor_id' => InstructorUser::all()->random()->instructor_id,
+        'user_id' => User::all()->random()->id,
         'test_name' => $faker->sentence($nbWords = 5, $variableNbWords = true) ,
         'test_duration' => $faker->numberBetween(1,200),
         'number_of_question' => $faker->numberBetween(1,100),

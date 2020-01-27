@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Model\Feedback;
 use Illuminate\Http\Request;
-
+use Symfony\Component\HttpFoundation\Response;
 class FeedbackController extends Controller
 {
     /**
@@ -14,18 +14,9 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+       return "index";
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -35,7 +26,48 @@ class FeedbackController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
+        if(empty($request->user_id)){
+              
+            return response([
+                'http_response' => Response::HTTP_NOT_FOUND,
+                'data' => '',
+                'message' =>' UserId is Null'
+            ],Response::HTTP_NOT_FOUND);
+
+        }
+
+        if(empty($request->feedback)){
+              
+            return response([
+                'http_response' => Response::HTTP_NOT_FOUND,
+                'data' => '',
+                'message' =>' Feedback Text is Null'
+            ],Response::HTTP_NOT_FOUND);
+
+        }
+
+
+        $feedback = new Feedback;
+
+        $feedback->user_id = $request->user_id;
+        $feedback->feedback = $request->feedback;
+
+        if($feedback->save()){
+            return response([
+                'http_response' => Response::HTTP_CREATED,
+                'data' => '',
+                'message' =>' Feedback Successfully created!'
+            ],Response::HTTP_CREATED);
+        }else{
+            return response([
+                'http_response' => Response::HTTP_NOT_FOUND,
+                'data' => '',
+                'message' =>' Creating Feedback Error'
+            ],Response::HTTP_NOT_FOUND);
+        }
     }
 
     /**
@@ -47,17 +79,7 @@ class FeedbackController extends Controller
     public function show(Feedback $feedback)
     {
         //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Model\Feedback  $feedback
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Feedback $feedback)
-    {
-        //
     }
 
     /**
@@ -70,6 +92,7 @@ class FeedbackController extends Controller
     public function update(Request $request, Feedback $feedback)
     {
         //
+        return "update";
     }
 
     /**
@@ -81,5 +104,6 @@ class FeedbackController extends Controller
     public function destroy(Feedback $feedback)
     {
         //
+        return "delate";
     }
 }
