@@ -13,7 +13,7 @@ class CreateInrolledUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('inrolled_users', function (Blueprint $table) {
+        Schema::create('enrolled_users', function (Blueprint $table) {
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('test_id')->unsigned();
 
@@ -36,6 +36,6 @@ class CreateInrolledUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('inrolled_users');
+        Schema::dropIfExists('enrolled_users');
     }
 }

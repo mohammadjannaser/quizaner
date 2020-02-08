@@ -16,18 +16,18 @@ class CreateQuestionsTable extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('test_id')->unsigned();
-            $table->text('question');
-            $table->string('question_image');
+            $table->text('question_text');
+            $table->string('question_image')->nullable();
             /**
              * There are three type of questions
              * 1. MSQ Questions
              * 2. information question
              * 3. long answer question
              */
-            $table->integer('question_type');
+            $table->integer('question_type')->default(1);
             // limit the time of answer of question.
-            $table->integer('question_duration');
-            $table->integer('question_score');
+            $table->integer('question_duration')->default(60);
+            $table->integer('question_mark')->default(1);
 
             $table->foreign('test_id')->references('id')->on('tests')
             ->onUpdate('restrict')->onDelete('cascade');

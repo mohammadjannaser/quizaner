@@ -17,8 +17,8 @@ class CreatePostsTable extends Migration
        
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
-            $table->text('post_text');
-            $table->string('post_image',200);
+            $table->text('post_text')->nullable();
+            $table->string('post_image',200)->nullable();
 
             $table->foreign('user_id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');

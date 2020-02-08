@@ -70,40 +70,5 @@ class FeedbackController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Feedback  $feedback
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Feedback $feedback)
-    {
-        //
 
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Feedback  $feedback
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Feedback $feedback)
-    {
-        //
-        return "update";
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Model\Feedback  $feedback
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Feedback $feedback)
-    {
-        //
-        return "delate";
-    }
 }

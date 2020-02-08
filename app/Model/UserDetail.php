@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserDetail extends Model
 {
+
+    protected $fillable = ['user_id','username','phone','dob','country','user_bio','user_profile_picture'
+    ,'verified','user_type'];
     //
     public function credit(){
         return $this->hasOne(Credit::class);

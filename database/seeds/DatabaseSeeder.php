@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         factory(App\Model\User::class,10)->create()->each(
             function($user){
 
-                factory(App\Model\UserDetail::class)->create(['user_id' => $user->id]);
+                factory(App\Model\UserDetail::class)->create(['id' => $user->id]);
 
                 factory(App\Model\Credit::class)->create(['user_id' => $user->id]);
                 

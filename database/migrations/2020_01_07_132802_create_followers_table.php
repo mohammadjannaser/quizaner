@@ -15,11 +15,11 @@ class CreateFollowersTable extends Migration
     {
         Schema::create('followers', function (Blueprint $table) {
 
+            $table->bigIncrements('id');
             $table->bigInteger('user1_id')->unsigned();
             $table->bigInteger('user2_id')->unsigned();
             
-            $table->primary(['user1_id', 'user2_id']);
-
+         
             $table->foreign('user1_id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');
 

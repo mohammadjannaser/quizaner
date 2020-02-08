@@ -15,20 +15,20 @@ class CreateUserDetailsTable extends Migration
     {
         Schema::create('user_details', function (Blueprint $table) {
 
-            $table->bigInteger('user_id')->primary()->unsigned();
+            $table->bigInteger('id')->primary()->unsigned();
 
             $table->string('username');
             $table->char('phone',14)->nullable();
-            $table->dateTime('dob');
-            $table->string('country',200);
-            $table->text('user_bio');
-            $table->string('user_profile_picture',200);
+            $table->date('dob')->nullable();
+            $table->string('country',100)->nullable();
+            $table->text('user_bio')->nullable();
+            $table->string('user_profile_picture',200)->nullable();
             $table->boolean('verified')->default(0);
             $table->integer('user_type')->default(1);
             // User type 1 indicate Student user and user type 2 indicate instructor type
 
 
-            $table->foreign('user_id')->references('id')->on('users')
+            $table->foreign('id')->references('id')->on('users')
             ->onUpdate('restrict')->onDelete('cascade');
 
             $table->timestamps();
